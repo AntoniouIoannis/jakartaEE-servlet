@@ -1,35 +1,24 @@
 package gr.antoniou.java.jakartaeeartifacthelloservlet.controller;
 
-import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import javax.script.ScriptContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/hello")
-public class HelloController extends HttpServlet {
-    private String message = "private String Hello World!";
-
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        message = "Override Hello World!";
-    }
-
+@WebServlet("/coding-factory")
+public class LandingPageController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         response.setContentType("text/html; charset=UTF-8");
 
-        PrintWriter out = response.getWriter();
-        out.println("<html><body><h1>Γειά σου κόσμε!</h1></body></html>");
+        request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
+    }
 
-    }
-    @Override
-    public void destroy() {
-    }
+
 }
